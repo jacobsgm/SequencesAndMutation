@@ -187,27 +187,16 @@ def index_of_largest_number(numbers, n):
 
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
-    tie_for_min = 1
-    index_of_min = numbers[0]
+    index_of_min = 0
     for k in range(n):
-        if(index_of_min > numbers[k]):
-            index_of_min = numbers[k]
-            number_to_save = k
+        if(numbers[index_of_min] < numbers[k]):
+            index_of_min = k
 
-        elif(index_of_min == numbers[k]):
-            tie_for_min = numbers[k]
-            other_number_to_save = k
-
-
-        if (index_of_min == tie_for_min):
-                if (number_to_save > other_number_to_save):
-                    return other_number_to_save
-                else:
-                    return number_to_save
+    return index_of_min
 
 
 
@@ -261,9 +250,16 @@ def number_of_stutters(s):
        :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+
+    count = 0
+    for k in range(len(s)-1):
+        if (s[k]==s[k+1]):
+            count+=1
+    return count
+
 
 
 def run_test_is_palindrome():
@@ -344,6 +340,12 @@ def is_palindrome(s):
     ####################################################################
     # ------------------------------------------------------------------
 
+
+    for k in range((len(s))/2):
+        if(s[k] != s[len(s)-k]):
+            return False
+
+    return True
 
 # ----------------------------------------------------------------------
 # Some problems loop (iterate) through two or more sequences
